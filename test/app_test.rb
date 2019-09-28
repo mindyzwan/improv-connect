@@ -20,12 +20,14 @@ class AppTest < Minitest::Test
 
   def test_index
     get "/"
+
     assert_equal 200, last_response.status
     assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
   end
 
   def test_users
     get "/users"
+
     assert_equal 200, last_response.status
     assert_equal "text/html;charset=utf-8", last_response["Content-Type"] 
     assert_includes last_response.body, "<dt>Mindy Zwanziger</dt>"
@@ -34,9 +36,16 @@ class AppTest < Minitest::Test
 
   def test_new_user
     get "/users/new"
+
     assert_equal 200, last_response.status
     assert_equal "text/html;charset=utf-8", last_response["Content-Type"] 
     assert_includes last_response.body, "<form action=\"/users/new\" method=\"post\">"
+  end
+
+  def test_post_new_user
+    post "/users/new", first_name: "Julia", last_name: "Childs", email: "julia@fakemail.com"
+
+    assert_equal 302, last_response.status
   end
 
 end
