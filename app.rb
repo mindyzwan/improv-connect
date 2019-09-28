@@ -24,3 +24,13 @@ end
 get "/users/new" do
   erb :new_user
 end
+
+post "/users/new" do
+  first_name = params[:first_name].strip
+  last_name = params[:last_name].strip
+  email = params[:email].strip
+
+  @storage.add_new_user(first_name, last_name, email)
+
+  redirect "/users"
+end
