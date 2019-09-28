@@ -1,11 +1,15 @@
 require 'sinatra'
-require 'sinatra/reloader'
 require "sinatra/content_for"
 
 require_relative 'database/database_persistence'
 
 configure do
 
+end
+
+configure(:dvelopment) do
+  require "sinatra/reloader"
+  also_reload "database_persistence.rb"
 end
 
 before do
@@ -33,4 +37,8 @@ post "/users/new" do
   @storage.add_new_user(first_name, last_name, email)
 
   redirect "/users"
+end
+
+post "/users/:userid/delete" do
+  redirect 
 end
