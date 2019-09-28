@@ -1,5 +1,6 @@
 require 'sinatra'
 require "sinatra/content_for"
+require "pry"
 
 require_relative 'database/database_persistence'
 
@@ -39,6 +40,9 @@ post "/users/new" do
   redirect "/users"
 end
 
-post "/users/:userid/delete" do
-  redirect 
+post "/users/:id/delete" do
+  id = params[:id].to_i
+  @storage.delete_user(id)
+
+  redirect "/users"
 end

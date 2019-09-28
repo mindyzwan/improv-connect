@@ -12,7 +12,10 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     multi_json (1.13.1)
+    nio4r (2.5.2)
     pg (1.1.4)
+    puma (4.2.0)
+      nio4r (~> 2.0)
     rack (1.6.11)
     rack-protection (1.5.5)
       rack
@@ -39,6 +42,7 @@ DEPENDENCIES
   erubis
   minitest-reporters
   pg
+  puma
   sinatra (~> 1.4.7)
   sinatra-contrib
 

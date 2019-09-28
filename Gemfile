@@ -5,3 +5,7 @@ gem "sinatra-contrib"
 gem "erubis"
 gem "pg"
 gem "minitest-reporters"
+
+group :production do
+  gem "puma"
+end
