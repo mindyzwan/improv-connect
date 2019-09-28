@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Parenthetical</title>
+      <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+  </head>
+  <body>
+    <nav>
+      <a class="nav" href="#">Home</a>
+      <a class ="nav" href="/users">Improvisers</a>
+      <a class ="nav" href="/users">Teams</a>
+      <a class="nav" href="#">Sign In</a>
+    </nav>
+    <header>
+      <%= yield_content (:header) %> 
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <small>Last updated August 2019. <br> Insert open source license info here.</small>
+      <br>
+    </footer>
+  </body>
+</html>

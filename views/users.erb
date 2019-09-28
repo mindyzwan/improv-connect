@@ -1,0 +1,8 @@
+<dl>
+  <% @all_users.each do |user| %>
+    <dt><%= user[:first_name]%> <%= user[:last_name]%></dt>
+    <dd><%= user[:email]%></dd>
+  <% end %>
+</dl>
+
+<a href="/users/new">Add a new user</a>
