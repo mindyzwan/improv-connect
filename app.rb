@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require "sinatra/content_for"
+require "pry"
 
 require_relative 'database/database_persistence'
 
@@ -31,6 +32,13 @@ post "/users/new" do
   email = params[:email].strip
 
   @storage.add_new_user(first_name, last_name, email)
+
+  redirect "/users"
+end
+
+post "/users/:id/delete" do
+  id = params[:id].to_i
+  @storage.delete_user(id)
 
   redirect "/users"
 end
