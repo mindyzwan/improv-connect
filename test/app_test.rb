@@ -28,6 +28,12 @@ class AppTest < Minitest::Test
     end
   end
 
+  def create_test_user
+    test_user_email = 'robert@fakemail.com'
+    @test_storage.add_new_user('Robert', 'Frost', test_user_email)
+    @test_user = @test_storage.get_user_from_email(test_user_email)
+  end
+
   def test_index
     get "/"
 
@@ -58,20 +64,24 @@ class AppTest < Minitest::Test
 
     get "/users"
     assert_includes last_response.body, 'Julia Childs'
-    
   end
 
   def test_delete_user
-    test_user_email = 'robert@fakemail.com'
-    @test_storage.add_new_user('Robert', 'Frost', test_user_email)
-    test_user = @test_storage.get_user_from_email(test_user_email)
+    create_test_user
 
-    post "/users/#{test_user[:id]}/delete"
+    post "/users/#{@test_user[:id]}/delete"
 
     assert_equal 302, last_response.status
 
     get "/users"
     refute_includes last_response.body, 'Robert Frost'
+  end
+
+  def test_edit_user_route
+    create_test_user
+
+    get "/users/#{@test_user[:id]}/edit"
+    assert_equal 200, last_response.status
   end
 
 end
