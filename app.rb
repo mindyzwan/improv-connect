@@ -46,3 +46,7 @@ post "/users/:id/delete" do
 
   redirect "/users"
 end
+
+get "/users/:id/edit" do 
+  erb :edit_user
+end
