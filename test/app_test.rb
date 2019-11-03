@@ -84,6 +84,7 @@ class AppTest < Minitest::Test
     get "/users/#{@test_user[:id]}/edit"
     assert_equal 200, last_response.status
     assert_includes last_response.body, "Editing #{@test_user[:first_name]}"
+    assert_includes last_response.body, "<form action=\"/users/#{@test_user[:id]}/edit\" method=\"post\">"
   end
 
 end
