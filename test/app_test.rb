@@ -47,6 +47,7 @@ class AppTest < Minitest::Test
     assert_equal 200, last_response.status
     assert_equal "text/html;charset=utf-8", last_response["Content-Type"] 
     assert_includes last_response.body, "<dt>Test User</dt>"
+    assert_includes last_response.body, "Edit User"
   end
 
   def test_new_user
@@ -82,6 +83,7 @@ class AppTest < Minitest::Test
 
     get "/users/#{@test_user[:id]}/edit"
     assert_equal 200, last_response.status
+    assert_includes last_response.body, "Editing #{@test_user[:first_name]}"
   end
 
 end

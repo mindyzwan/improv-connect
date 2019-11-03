@@ -46,4 +46,9 @@ class DatabasePersistence
     user = tuple_to_user_hash_array(result)[0]
   end
 
+  def get_user_from_id(id)
+    sql = "SELECT * FROM users WHERE id=$1"
+    result = query(sql, id)
+    user = tuple_to_user_hash_array(result)[0]
+  end
 end

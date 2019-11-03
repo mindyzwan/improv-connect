@@ -48,5 +48,8 @@ post "/users/:id/delete" do
 end
 
 get "/users/:id/edit" do 
+  id = params[:id].to_i
+  @user = @storage.get_user_from_id(id)
+
   erb :edit_user
 end
