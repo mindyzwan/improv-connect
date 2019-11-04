@@ -51,4 +51,10 @@ class DatabasePersistence
     result = query(sql, id)
     user = tuple_to_user_hash_array(result)[0]
   end
+
+  def edit_user_from_id(id, new_first_name, new_last_name, new_email)
+    sql = "UPDATE users SET first_name = $1, last_name = $2, email = $3 WHERE id = $4"
+    query(sql, new_first_name, new_last_name, new_email, id)
+  end
+
 end

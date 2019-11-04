@@ -1,1 +1,17 @@
-<h1>Editing <%="#{@user[:first_name]} #{@user[:last_name]}"%>
+<h1>Editing <%=@user[:first_name]%> <%=@user[:last_name]%></h1>
+
+<form action="/users/<%=@user[:id]%>/edit" method="post">
+	<fieldset>
+	<label for="first_name">First Name</label>
+	<input type="text" name="first_name" id="first_name" value="<%=@user[:first_name]%>" minlength="1">
+
+	<label for="last_name">Last Name</label>
+	<input type="text" name="last_name" id="last_name" value="<%=@user[:last_name]%>" minlength="1">
+
+	<label for="email">Email Address</label>
+	<input type="email" name="email" id="email" value="<%=@user[:email]%>" minlength="4">
+
+	<!-- TODO: Add list of teams here -->
+	<input type="submit" value="Save Changes">
+  </fieldset>
+</form>

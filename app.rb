@@ -53,3 +53,16 @@ get "/users/:id/edit" do
 
   erb :edit_user
 end
+
+post "/users/:id/edit" do
+  id = params[:id].to_i
+  @user = @storage.get_user_from_id(id)
+
+  first_name = params[:first_name].strip
+  last_name = params[:last_name].strip
+  email = params[:email].strip
+
+  @storage.edit_user_from_id(id, first_name, last_name, email)
+
+  redirect "/users"
+end
