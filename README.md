@@ -8,7 +8,6 @@ A website to connect improvisors and their teams with venues and their show mana
 `ruby test/app_test.rb` to run tests.
 
 ## Next Steps
-TODO: Add content to edit_user.erb
 TODO: Add all_teams route
 TODO: Add all_teams content
 TODO: Add ability to delete a team

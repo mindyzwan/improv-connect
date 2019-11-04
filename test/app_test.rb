@@ -87,4 +87,14 @@ class AppTest < Minitest::Test
     assert_includes last_response.body, "<form action=\"/users/#{@test_user[:id]}/edit\" method=\"post\">"
   end
 
+  def test_edit_user
+    create_test_user
+
+    post "/users/#{@test_user[:id]}/edit", first_name: 'Jennifer', last_name: 'Anniston', email: 'janni@fakeemail.com'
+    assert_equal 302, last_response.status
+
+    get "/users"
+    assert_includes last_response.body, 'Jennifer Anniston'
+  end
+
 end
