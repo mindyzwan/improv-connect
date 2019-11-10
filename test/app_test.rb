@@ -97,4 +97,10 @@ class AppTest < Minitest::Test
     assert_includes last_response.body, 'Jennifer Anniston'
   end
 
+  def test_teams
+    get "/teams"
+
+    assert_equal 200, last_response.status
+  end
+
 end

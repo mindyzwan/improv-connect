@@ -62,3 +62,8 @@ post "/users/:id/edit" do
 
   redirect "/users"
 end
+
+get "/teams" do
+  
+  erb :teams
+end
