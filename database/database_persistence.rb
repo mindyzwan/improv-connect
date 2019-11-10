@@ -57,4 +57,22 @@ class DatabasePersistence
     query(sql, new_first_name, new_last_name, new_email, id)
   end
 
+  def tuple_to_team_hash_array(query_result)
+    query_result.map do |tuple|
+      {id: tuple["id"], name: tuple["team_name"], description: tuple["description"]}
+    end
+  end
+
+  def add_new_team(team_name, description)
+    sql = "INSERT INTO teams (team_name, description) VALUES ($1, $2)"
+    query(sql, team_name, description)
+  end
+
+  def all_teams
+    sql = "SELECT * FROM teams"
+    result = query(sql)
+
+    tuple_to_team_hash_array(result)
+  end
+
 end
