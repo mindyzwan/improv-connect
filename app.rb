@@ -72,3 +72,12 @@ end
 get "/teams/new" do
   erb :new_team
 end
+
+post "/teams/new" do
+  name = params[:name].strip
+  description = params[:description].strip
+
+  @storage.add_new_team(name, description)
+
+  redirect "/users"
+end

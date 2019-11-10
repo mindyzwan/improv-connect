@@ -117,4 +117,13 @@ class AppTest < Minitest::Test
     assert_includes last_response.body, "<form action=\"/teams/new\" method=\"post\">"
   end
 
+  def test_post_new_team
+    post "/teams/new", name: "Con People", description: "A conglomeration of beautiful people"
+
+    assert_equal 302, last_response.status
+
+    get "/teams"
+    assert_includes last_response.body, 'Con People'
+  end
+
 end
