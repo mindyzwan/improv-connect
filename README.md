@@ -9,6 +9,7 @@ A website to connect improvisors and their teams with venues and their show mana
 
 ## Next Steps
 TODO: Add ability to delete a team
-TODO: Add ability to edit a team
 TODO: Add edit_team route
-TODO: Add edit_team content
+TODO: Add ability to edit a team
+TODO: Add ability to add users to a team
+TODO: Add sign-in ability 
