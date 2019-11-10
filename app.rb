@@ -68,3 +68,7 @@ get "/teams" do
 
   erb :teams
 end
+
+get "/teams/new" do
+  erb :new_team
+end

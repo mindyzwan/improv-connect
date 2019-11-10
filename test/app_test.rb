@@ -110,4 +110,11 @@ class AppTest < Minitest::Test
     assert_includes last_response.body, 'M-Prov'
   end
 
+  def test_new_team
+    get "/teams/new"
+
+    assert_equal 200, last_response.status
+    assert_includes last_response.body, "<form action=\"/teams/new\" method=\"post\">"
+  end
+
 end
