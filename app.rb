@@ -83,5 +83,5 @@ post "/teams/new" do
 
   @storage.add_new_team(name, description)
 
-  redirect "/users"
+  redirect "/teams"
 end
