@@ -64,6 +64,7 @@ post "/users/:id/edit" do
 end
 
 get "/teams" do
-  
+  @all_teams = @storage.all_teams
+
   erb :teams
 end

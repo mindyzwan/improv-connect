@@ -18,6 +18,7 @@ class AppTest < Minitest::Test
   def setup
     @test_storage = DatabasePersistence.new
     @test_storage.add_new_user('Test', 'User', 'test@user.com')
+    create_test_team
   end
 
   def teardown
@@ -32,6 +33,11 @@ class AppTest < Minitest::Test
     test_user_email = 'robert@fakemail.com'
     @test_storage.add_new_user('Robert', 'Frost', test_user_email)
     @test_user = @test_storage.get_user_from_email(test_user_email)
+  end
+
+  def create_test_team
+    description = 'A rockin group of A to L level improvisors'
+    @test_storage.add_new_team('M-Prov', description)
   end
 
   def test_index
@@ -101,6 +107,7 @@ class AppTest < Minitest::Test
     get "/teams"
 
     assert_equal 200, last_response.status
+    assert_includes last_response.body, 'M-Prov'
   end
 
 end

@@ -1,0 +1,14 @@
+<dl>
+  <!-- TODO: Order alphabetically by name -->
+  <% @all_teams.each do |team| %>
+    <dt><%= team[:name]%></dt>
+    <dd><%= team[:description]%></dd>
+    <dd>
+      <form action="/teams/<%= team[:id] %>/delete" method="post">
+        <input type="submit" value="Delete Team">
+      </form>
+      <a href="/teams/<%=team[:id]%>/edit"><button>Edit Team</button></a>
+  <% end %>
+</dl>
+
+<a href="/teams/new">Add a new team</a>
